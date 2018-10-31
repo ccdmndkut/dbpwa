@@ -33,6 +33,9 @@ export default {
     return {
       //
     }
+  },
+  mounted() {
+    window.resizeTo(100, 100);
   }
 }
 </script>
