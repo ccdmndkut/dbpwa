@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="right">
-      <v-btn @click="clear" id="clearbutton" class='headline' flat block color="success">CLEAR</v-btn>
+      <v-btn @click="clear" id="clearbutton" class='headline' flat block color="success">CLR</v-btn>
       <v-btn @click="undofunc" id="clearbutton" class='headline' flat block color="success">UNDO</v-btn>
       <v-btn @click="clear" id="clearbutton" disabled class='headline' flat block color="success">REDO</v-btn>
 
@@ -109,6 +109,11 @@ export default {
   margin: 0px;
   border: 1px solid #2a353b;
   border-radius: 0px;
+}
+body {
+  /* Disables pull-to-refresh and overscroll glow effect.
+     Still keeps swipe navigations. */
+  overscroll-behavior-y: none;
 }
 html {
 touch-action: manipulation;
