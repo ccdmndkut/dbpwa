@@ -60,9 +60,9 @@ export default {
       e.preventDefault();
       // Stash the event so it can be triggered later.
       deferredPrompt = e;
-      var btnAdd = document.getElementById("appadd");
+      // var btnAdd = document.getElementById("appadd");
       // Update UI notify the user they can add to home screen
-      btnAdd.style.display = "grid";
+      // btnAdd.style.display = "grid";
     });
     btnAdd.addEventListener("click", e => {
       // hide our user interface that shows our A2HS button
@@ -142,7 +142,7 @@ export default {
   opacity: 0.8;
   z-index: 100;
   color: white;
-  display: none;
+  display: grid;
   grid-template-rows: 25% 50% 25%;
   align-items: center;
   justify-content: center;
