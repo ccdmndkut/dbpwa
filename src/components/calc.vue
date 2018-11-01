@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="right">
-      <v-btn @click="clear" id="clearbutton" class='headline' flat block color="success">CLEAR</v-btn>
+      <v-btn @click="clear" id="clearbutton" class='headline' flat block color="success">CLR</v-btn>
       <v-btn @click="undofunc" id="clearbutton" class='headline' flat block color="success">UNDO</v-btn>
       <v-btn @click="clear" id="clearbutton" disabled class='headline' flat block color="success">REDO</v-btn>
 
@@ -113,8 +113,8 @@ export default {
 html {
 touch-action: manipulation;
   overflow: hidden;
-  width: 450px;
-  height: 650px;
+  width: 100vw;
+  height: 100vh;
 }
 #clear {
   position: relative;
