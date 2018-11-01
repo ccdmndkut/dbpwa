@@ -119,7 +119,7 @@ touch-action: manipulation;
   overflow: hidden;
   width: 100%;
   height: 100%;
-  overscroll-behavior-y: none;
+  
 }
 #clear {
   position: relative;
