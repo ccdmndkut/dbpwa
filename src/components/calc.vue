@@ -142,7 +142,7 @@ export default {
   opacity: 0.8;
   z-index: 100;
   color: white;
-  display: grid;
+  display: none;
   grid-template-rows: 25% 50% 25%;
   align-items: center;
   justify-content: center;
