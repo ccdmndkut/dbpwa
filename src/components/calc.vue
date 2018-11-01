@@ -110,10 +110,6 @@ export default {
   border: 1px solid #2a353b;
   border-radius: 0px;
 }
-body {
-  
-  overscroll-behavior-y: none;
-}
 html {
 touch-action: manipulation;
   overflow: hidden;
