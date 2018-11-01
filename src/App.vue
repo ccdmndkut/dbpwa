@@ -12,7 +12,7 @@
       </v-btn>
     </v-toolbar>
     <v-content>
-      <HelloWorld />
+      <HelloWorld v-bind:isMobileDevice="isMobileDevice" />
     </v-content>
   </v-app>
 </template>
