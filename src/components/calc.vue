@@ -111,6 +111,7 @@ export default {
   border-radius: 0px;
 }
 html {
+touch-action: manipulation;
   overflow: hidden;
   width: 450px;
   height: 650px;
