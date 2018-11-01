@@ -2,7 +2,7 @@
   <div>
     <template>
       <div id="appadd">
-        <div id="addbutt">Install</div>
+        <div id="addbutt">Click To Install</div>
       </div>
     </template>
     <template>
@@ -131,6 +131,9 @@ export default {
   font-size: 50px;
   width: 100%;
 }
+#appadd:hover {
+  color: yellow;
+}
 #appadd {
   position: absolute;
   background-color: black;
@@ -139,10 +142,11 @@ export default {
   opacity: 0.8;
   z-index: 100;
   color: white;
-  display: none;
+  display: grid;
   grid-template-rows: 25% 50% 25%;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 #butstyle {
   color: white;
