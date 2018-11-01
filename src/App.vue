@@ -8,7 +8,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn flat href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
-        <span class="mr-2">1.0</span>
+        <span class="mr-2">1.1</span>
       </v-btn>
     </v-toolbar>
     <v-content>
