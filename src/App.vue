@@ -13,7 +13,7 @@
 
     <v-content>
       <HelloWorld />
-      <calc />
+
     </v-content>
   </v-app>
 </template>
