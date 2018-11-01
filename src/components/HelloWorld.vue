@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container fluid fill-height>
-      <v-btn @click="popup('http://192.168.0.110:8080/calc.html','Calc',400, 500)" color="success">Calc</v-btn>
+      <v-btn @click="popup('https://amazing-tereshkova-51136d.netlify.com/calc.html','Calc',400, 500)" color="success">Calc</v-btn>
 
     </v-container>
   </div>
