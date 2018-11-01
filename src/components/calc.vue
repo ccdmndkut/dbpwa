@@ -53,33 +53,73 @@ export default {
     document.getElementById("ig").addEventListener("dblclick", function(event) {
       event.preventDefault();
     });
-    let deferredPrompt;
     var btnAdd = document.getElementById("appadd");
-    window.addEventListener("beforeinstallprompt", e => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
+
+    var deferredPrompt;
+    window.addEventListener("beforeinstallprompt", function(e) {
+      console.log("beforeinstallprompt Event fired");
       e.preventDefault();
+      btnAdd.style.display = "grid";
       // Stash the event so it can be triggered later.
       deferredPrompt = e;
-      // var btnAdd = document.getElementById("appadd");
-      // Update UI notify the user they can add to home screen
-      // btnAdd.style.display = "grid";
+
+      return false;
     });
-    btnAdd.addEventListener("click", e => {
-      // hide our user interface that shows our A2HS button
-      btnAdd.style.display = "none";
-      // Show the prompt
-      deferredPrompt.prompt();
-      // Wait for the user to respond to the prompt
-      deferredPrompt.userChoice.then(choiceResult => {
-        if (choiceResult.outcome === "accepted") {
-          console.log("User accepted the A2HS prompt");
-        } else {
-          console.log("User dismissed the A2HS prompt");
-        }
-        deferredPrompt = null;
-      });
+
+    btnAdd.addEventListener("click", function() {
+      if (deferredPrompt !== undefined) {
+        // The user has had a positive interaction with our app and Chrome
+        // has tried to prompt previously, so let's show the prompt.
+        deferredPrompt.prompt();
+
+        // Follow what the user has done with the prompt.
+        deferredPrompt.userChoice.then(function(choiceResult) {
+          console.log(choiceResult.outcome);
+
+          if (choiceResult.outcome == "dismissed") {
+            console.log("User cancelled home screen install");
+          } else {
+            console.log("User added to home screen");
+            btnAdd.style.display = "none";
+          }
+
+          // We no longer need the prompt.  Clear it up.
+          deferredPrompt = null;
+        });
+      }
     });
   },
+  // mounted() {
+  //   document.getElementById("ig").addEventListener("dblclick", function(event) {
+  //     event.preventDefault();
+  //   });
+  //   let deferredPrompt;
+  //   var btnAdd = document.getElementById("appadd");
+  //   window.addEventListener("beforeinstallprompt", e => {
+  //     // Prevent Chrome 67 and earlier from automatically showing the prompt
+  //     e.preventDefault();
+  //     // Stash the event so it can be triggered later.
+  //     deferredPrompt = e;
+  //     // var btnAdd = document.getElementById("appadd");
+  //     // Update UI notify the user they can add to home screen
+  //     // btnAdd.style.display = "grid";
+  //   });
+  //   btnAdd.addEventListener("click", e => {
+  //     // hide our user interface that shows our A2HS button
+  //     btnAdd.style.display = "none";
+  //     // Show the prompt
+  //     deferredPrompt.prompt();
+  //     // Wait for the user to respond to the prompt
+  //     deferredPrompt.userChoice.then(choiceResult => {
+  //       if (choiceResult.outcome === "accepted") {
+  //         console.log("User accepted the A2HS prompt");
+  //       } else {
+  //         console.log("User dismissed the A2HS prompt");
+  //       }
+  //       deferredPrompt = null;
+  //     });
+  //   });
+  // },
   methods: {
     popper(i, rate) {
       const r = this.myrates;
@@ -142,7 +182,7 @@ export default {
   opacity: 0.8;
   z-index: 100;
   color: white;
-  display: grid;
+  display: none;
   grid-template-rows: 25% 50% 25%;
   align-items: center;
   justify-content: center;
