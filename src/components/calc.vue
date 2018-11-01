@@ -3,7 +3,7 @@
     <div class="buttons">
       <div v-for="(rate, i) in rates" :key="i">
         <!-- <div class='buttonContainer'> -->
-        <v-btn @dblclick="addrate(rate)" @click="addrate(rate)" block outline flat class="button display-1 font-weight-bold">
+        <v-btn @click="addrate(rate)" block outline flat class="button display-1 font-weight-bold">
           <span id="butstyle"> {{rate}}</span> </v-btn>
         <!-- <div class="button display-1 font-weight-bold">{{rate}}</div> -->
         <!-- </div> -->

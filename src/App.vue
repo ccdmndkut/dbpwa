@@ -3,7 +3,9 @@
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
         <span>Veteran 2 Veteran</span>
-        <span class="font-weight-light">Main Page</span>
+        <span v-if="isMobileDevice" class="font-weight-light"> Mobile Page</span>
+        <span v-if="!isMobileDevice" class="font-weight-light"> Desktop Page</span>
+
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn flat href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
@@ -33,7 +35,14 @@ export default {
       now: new Date()
     };
   },
-  computed: {},
+  computed: {
+    isMobileDevice() {
+      return (
+        typeof window.orientation !== "undefined" ||
+        navigator.userAgent.indexOf("IEMobile") !== -1
+      );
+    }
+  },
   mounted() {}
 };
 </script>
