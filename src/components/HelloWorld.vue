@@ -1,20 +1,10 @@
 <template>
+  <div>
+    <v-container fluid fill-height>
+      <v-btn @click="popup('http://192.168.0.110:8080/calc.html','Calc',400, 500)" color="success">Calc</v-btn>
 
-  <v-container v-if="calcopen == 'false'">
-    <v-layout text-xs-center wrap>
-      <v-flex mb-4>
-        <h1 class="display-2 font-weight-bold mb-3">
-          VA Combined Rating Calculator App
-        </h1>
-        <p class="subheading font-weight-regular">
-          Click below to open.
-        </p>
-      </v-flex>
-      <v-flex xs12>
-        <v-btn @click="opencalc" color="success">OPEN</v-btn>
-      </v-flex>
-    </v-layout>
-  </v-container>
+    </v-container>
+  </div>
 
 </template>
 
@@ -25,37 +15,23 @@ export default {
       checker: false
     };
   },
-  created() {
-    // sessionStorage.setItem("calc", "false");
-  },
-  computed: {
-    calcopen() {
-      return sessionStorage.getItem("calc");
-    }
-  },
+  computed: {},
   methods: {
-    opencalc() {
-      sessionStorage.setItem("calc", "true");
-      console.log(this.calcopen);
-      this.checker = sessionStorage.getItem("calc");
-      console.log(this.checker);
-
-      var u = "camw.html",
-        n = "http://localhost:8080/",
-        w = 100,
-        h = 100;
-
-      var myparameters =
-        "width=" +
-        w +
-        ", height=" +
-        h +
-        ", resizable = yes, toolbar = no, location = no, directories = no, status = no, menubar = no, scrollbars = no, resizable = no";
-
-      window.close();
-      var b = window.open(u, n, myparameters);
-      var c = window.focus();
-      return [b, c];
+    popup(url, title, w, h) {
+      var left = screen.width / 2 - w / 2;
+      var top = screen.height / 2 - h / 1.5;
+      return window.open(
+        url,
+        title,
+        "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=" +
+          w +
+          ", height=" +
+          h +
+          ", top=" +
+          top +
+          ", left=" +
+          left
+      );
     }
   }
 };

@@ -3,7 +3,7 @@
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
         <span>Veteran 2 Veteran</span>
-        <span class="font-weight-light">Main Page</span>
+        <span class="font-weight-light"> - Combined Rating Calculator</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn flat href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
@@ -12,22 +12,15 @@
     </v-toolbar>
 
     <v-content>
-      <HelloWorld />
-      <calc />
+
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
-import calc from "./components/calc";
-
 export default {
   name: "App",
-  components: {
-    HelloWorld,
-    calc
-  },
+  components: {},
   data() {
     return {
       now: new Date()
