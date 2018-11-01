@@ -6,6 +6,7 @@ const load = () => {
   console.log("load event detected!");
   if (window.matchMedia("(display-mode: standalone)").matches) {
     console.log("display-mode is standalone");
+    window.resizeTo(400, 600);
   }
 };
 window.onload = load;
