@@ -2,13 +2,13 @@
   <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span v-if="!isMobileDevice">Veteran 2 Veteran</span>
-        <span v-if="isMobileDevice" class="font-weight-light"> Mobile Page</span>
-        <span v-if="!isMobileDevice" class="font-weight-light"> Desktop Page</span>
+        <span>V2V</span>
+        <span v-if="isMobileDevice" class="font-weight-light"> - Calc </span>
+        <span v-if="!isMobileDevice" class="font-weight-light"> - Calculator </span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn flat href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
-        <span class="mr-2">1.1</span>
+      <v-btn flat href="https://github.com/ccdmndkut/dbpwa/tree/testing" target="_blank">
+        <span class="mr-2">1.2</span>
       </v-btn>
     </v-toolbar>
     <v-content>

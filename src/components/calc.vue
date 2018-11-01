@@ -1,29 +1,34 @@
 <template>
-  <div id="ig" class="innergrid">
-    <div class="buttons">
-      <div v-for="(rate, i) in rates" :key="i">
-        <!-- <div class='buttonContainer'> -->
-        <v-btn @click="addrate(rate)" block outline flat class="button display-1 font-weight-bold">
-          <span id="butstyle"> {{rate}}</span> </v-btn>
-        <!-- <div class="button display-1 font-weight-bold">{{rate}}</div> -->
-        <!-- </div> -->
+  <div>
+    <template>
+      <div id="appadd">
+        <div id="addbutt">Install</div>
       </div>
-    </div>
-    <div class="top">
-      <div id="combinedcalc">{{combinedRate}}%</div>
-      <div id="rates">
-        <div class="rateDisplay" v-for="(rates, index) in myrates" :key="index">
-          <v-chip class='mychips' small @input="popper(index, rates)" close>{{rates}}</v-chip>
+    </template>
+    <template>
+      <div id="ig" class="innergrid">
+        <div class="buttons">
+          <div v-for="(rate, i) in rates" :key="i">
+            <v-btn @click="addrate(rate)" block outline flat class="button display-1 font-weight-bold">
+              <span id="butstyle"> {{rate}}</span> </v-btn>
+          </div>
+        </div>
+        <div class="top">
+          <div id="combinedcalc">{{combinedRate}}%</div>
+          <div id="rates">
+            <div class="rateDisplay" v-for="(rates, index) in myrates" :key="index">
+              <v-chip class='mychips' small @input="popper(index, rates)" close>{{rates}}</v-chip>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <v-btn @click="clear" id="clearbutton" class='headline' flat block color="success">CLR</v-btn>
+          <v-btn @click="undofunc" id="clearbutton" class='headline' flat block color="success">UNDO</v-btn>
+          <v-btn @click="clear" id="clearbutton" disabled class='headline' flat block color="success">REDO</v-btn>
         </div>
       </div>
-    </div>
-    <div class="right">
-      <v-btn @click="clear" id="clearbutton" class='headline' flat block color="success">CLR</v-btn>
-      <v-btn @click="undofunc" id="clearbutton" class='headline' flat block color="success">UNDO</v-btn>
-      <v-btn @click="clear" id="clearbutton" disabled class='headline' flat block color="success">REDO</v-btn>
+    </template>
 
-      <!-- <div id="clear">CLEAR</div> -->
-    </div>
   </div>
 
 </template>
@@ -44,9 +49,35 @@ export default {
       buttoncolor: "#2a353b"
     };
   },
-  created() {
+  mounted() {
     document.getElementById("ig").addEventListener("dblclick", function(event) {
       event.preventDefault();
+    });
+    let deferredPrompt;
+    var btnAdd = document.getElementById("appadd");
+    window.addEventListener("beforeinstallprompt", e => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      var btnAdd = document.getElementById("appadd");
+      // Update UI notify the user they can add to home screen
+      btnAdd.style.display = "grid";
+    });
+    btnAdd.addEventListener("click", e => {
+      // hide our user interface that shows our A2HS button
+      btnAdd.style.display = "none";
+      // Show the prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      deferredPrompt.userChoice.then(choiceResult => {
+        if (choiceResult.outcome === "accepted") {
+          console.log("User accepted the A2HS prompt");
+        } else {
+          console.log("User dismissed the A2HS prompt");
+        }
+        deferredPrompt = null;
+      });
     });
   },
   methods: {
@@ -95,10 +126,23 @@ export default {
 </script>
 
 <style >
-::-webkit-scrollbar {
-  width: 0px;
-  background: yellow;
-  display: inline !important;
+#addbutt {
+  grid-row: 2 / span 1;
+  font-size: 50px;
+  width: 100%;
+}
+#appadd {
+  position: absolute;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  opacity: 0.8;
+  z-index: 100;
+  color: white;
+  display: none;
+  grid-template-rows: 25% 50% 25%;
+  align-items: center;
+  justify-content: center;
 }
 #butstyle {
   color: white;
@@ -110,13 +154,7 @@ export default {
   border: 1px solid #2a353b;
   border-radius: 0px;
 }
-html {
-touch-action: manipulation;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  
-}
+
 #clear {
   position: relative;
   transform: rotate(90deg);
@@ -135,10 +173,10 @@ touch-action: manipulation;
   margin: 0px;
 }
 .innergrid {
-  width: 450px;
-  height: 650px;
+  width: 100vw;
+  height: 100vh;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 4fr 1fr;
   grid-template-rows: 2fr 5fr;
   justify-content: center;
   outline: 1px solid #2a353b;
@@ -146,7 +184,7 @@ touch-action: manipulation;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
-@media screen {
+/* @media screen {
   .innergrid {
     width: 100vw;
     height: 100vh;
@@ -159,7 +197,7 @@ touch-action: manipulation;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
   }
-}
+} */
 .buttonBorder {
   outline: 1px solid #2a353b;
   box-sizing: border-box;
