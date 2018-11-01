@@ -1,5 +1,5 @@
 <template>
-  <div class="innergrid">
+  <div id="ig" class="innergrid">
     <div class="buttons">
       <div v-for="(rate, i) in rates" :key="i">
         <!-- <div class='buttonContainer'> -->
@@ -43,6 +43,11 @@ export default {
       mycalc: Number,
       buttoncolor: "#2a353b"
     };
+  },
+  created() {
+    document.getElementById("ig").addEventListener("dblclick", function(event) {
+      event.preventDefault();
+    });
   },
   methods: {
     popper(i, rate) {
