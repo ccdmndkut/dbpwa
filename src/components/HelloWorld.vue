@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-container fluid fill-height>
-      <v-btn v-if="!isMobileDevice" @click="gotocalc" color="success">Calc</v-btn>
-      <v-btn v-if="isMobileDevice" @click="popup('https://amazing-tereshkova-51136d.netlify.com/calc.html','Calc',400, 550)" color="success">Calc</v-btn>
+      <v-btn v-if="isMobileDevice" @click="gotocalc" color="success">Calc</v-btn>
+      <v-btn v-if="!isMobileDevice" @click="popup('https://amazing-tereshkova-51136d.netlify.com/calc.html','Calc',400, 550)" color="success">Calc</v-btn>
 
       <v-btn v-if="!isMobileDevice" @click="popup('http://localhost:8080/calc.html','Calc',400, 550)" color="success">Calc</v-btn>
 
