@@ -80,13 +80,17 @@ export default {
             console.log("User cancelled home screen install");
           } else {
             console.log("User added to home screen");
-            btnAdd.style.display = "none";
+            // btnAdd.style.display = "none";
           }
 
           // We no longer need the prompt.  Clear it up.
           deferredPrompt = null;
         });
       }
+    });
+    window.addEventListener("appinstalled", evt => {
+      btnAdd.style.display = "none";
+      app.logEvent("a2hs", "installed");
     });
   },
   // mounted() {

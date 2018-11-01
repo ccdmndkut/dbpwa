@@ -4,6 +4,9 @@ import App from "./App.vue";
 import "../registerServiceWorker";
 const load = () => {
   console.log("load event detected!");
+  if (window.matchMedia("(display-mode: standalone)").matches) {
+    console.log("display-mode is standalone");
+  }
 };
 window.onload = load;
 
