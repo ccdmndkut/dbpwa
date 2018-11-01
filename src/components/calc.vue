@@ -111,8 +111,7 @@ export default {
   border-radius: 0px;
 }
 body {
-  /* Disables pull-to-refresh and overscroll glow effect.
-     Still keeps swipe navigations. */
+  
   overscroll-behavior-y: none;
 }
 html {
@@ -120,6 +119,7 @@ touch-action: manipulation;
   overflow: hidden;
   width: 100%;
   height: 100%;
+  overscroll-behavior-y: none;
 }
 #clear {
   position: relative;
