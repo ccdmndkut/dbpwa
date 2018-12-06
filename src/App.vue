@@ -1,33 +1,20 @@
 <template>
   <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>V2V</span>
-        <span v-if="isMobileDevice" class="font-weight-light"> - Calc </span>
-        <span v-if="!isMobileDevice" class="font-weight-light"> - Calculator </span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn flat href="https://github.com/ccdmndkut/dbpwa/tree/testing" target="_blank">
-        <span class="mr-2">1.2</span>
-      </v-btn>
-    </v-toolbar>
-    <v-content>
-      <HelloWorld v-bind:isMobileDevice="isMobileDevice" />
-    </v-content>
+   <calc></calc>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import calc from "./components/calc";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    calc
   },
   data() {
     return {
-      now: new Date()
+
     };
   },
   computed: {
